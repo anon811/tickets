@@ -12,14 +12,14 @@
     - Категория (Category). Может казаться избыточным атрибутом, но по факту категория заявки не всегда соответствует типу устройства (как пример - заявка может быть подана на неисправный принтер, но неполадки вызваны сбоем в драйверах или принт-сервере);
     - Расход (Expenditure). Расход компонентов со склада;
     
-    ![](https://github.com/anon811/tickets/blob/main/readme-img/ticket_form.png)
+![](https://github.com/anon811/tickets/blob/main/readme-img/ticket_form.png)
 
 На странице "Сводка" отображаются последние 10 открытых заявок, гистограммы в верхней частью отображают открытые/закрытые заявки за выбранный период. 
 
-    ![](https://github.com/anon811/tickets/blob/main/readme-img/dashboard.png)
+![](https://github.com/anon811/tickets/blob/main/readme-img/dashboard.png)
 
 Страница заявок позволяет просматривать и фильтровать заявки. Таблица поддерживает "ленивую загрузку" данных по мере прокрутки окна вниз. 
     
-    ![](https://github.com/anon811/tickets/blob/main/readme-img/ticket-list.png)
+![](https://github.com/anon811/tickets/blob/main/readme-img/ticket-list.png)
 
 Авторизация требуется для редактирования/создания, для просмотра информации авторизация не нужна. Стоит признать, что это тот еще"велосипед", работает с помощью local storage. Изначально проект использовал JWT и Google Firebase auth, был выпилен за ненадобностью - сильно усложнял проект без видимых преимуществ. 
