@@ -50,17 +50,6 @@ class ExpenditureSerializer(serializers.ModelSerializer):
         model = Expenditure
         fields = ['id', 'position', 'quantity']
 
-    def validate(self, data):
-        """
-        Prevent negative position quantity in store.
-        """
-        pos = data['position']
-        available = pos.quantity
-        required = data['quantity']
-        if available < required:
-            raise serializers.ValidationError(f'Доступно всего {available} {pos}')
-        return data
-
 
 class TicketSerializer(serializers.ModelSerializer):
     device = DeviceSerializer()

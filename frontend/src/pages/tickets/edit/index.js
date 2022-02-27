@@ -11,8 +11,8 @@ export default class Page {
   }
 
   async initComponents () {
-    const [, productId] = this.match;
-    const ticketForm = new TicketForm(productId);
+    const [, ticketId] = this.match;
+    const ticketForm = new TicketForm(ticketId);
     await ticketForm.render();
     this.components.ticketForm = ticketForm;
   }
@@ -22,7 +22,8 @@ export default class Page {
     <div class="ticket-edit">
       <div class="content__top-panel">
         <h1 class="page-title">
-          <a href="/tickets" class="link">Заявки</a> / Добавить
+          <a href="/tickets" class="link">Заявки</a> / 
+            ${this.ticketId? 'Редактировать' : 'Добавить'}
         </h1>
       </div>
       <div class="content-box">
