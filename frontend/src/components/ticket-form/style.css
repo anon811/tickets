@@ -1,0 +1,42 @@
+.ticket-form form:not(.form-inline) {
+  max-width: 800px;
+}
+
+.ticket-form .form .form-group__wide [class*="button-"] {
+  width: 160px;
+  margin-bottom: 8px;
+}
+
+.ticket-form .sortable-list {
+  margin: 8px 0 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.ticket-form .ticket-edit__expenditure-item {
+  background-color: var(--grey-skeleton);
+  display: grid;
+  grid-template-columns: 70%  20% 10%;
+  border-radius: 5px;
+  box-shadow: none;
+  margin: 5px 0px 10px ;
+  padding: 8px 12px;
+}
+
+.ticket-form .ticket-edit__expenditure-item > span {
+  display: flex;
+  align-items: center;
+}
+
+.ticket-form .ticket-edit__expenditure-item > button {
+  padding: 0;
+  box-shadow: none;
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0 8px;
+}
+
+.ticket-form .ticket-edit__expenditure-item > span > * {
+  margin: 0 8px;
+}

@@ -1,0 +1,86 @@
+export default class ColumnChart {
+  element;
+  subElements = {};
+  chartHeight = 50;
+
+  constructor({
+    data = {},
+    label = '',
+    link = '',
+    value = 0
+  } = {}) {
+    this.data = data;
+    this.label = label;
+    this.link = link;
+    this.value = value;
+
+    this.render();
+  }
+
+  getColumnBody(data) {
+    const maxValue = Math.max(...Object.values(data));
+
+    return Object.entries(data)
+    .map(item => {
+      const scale = this.chartHeight / maxValue;
+      return `<div style="--value: ${Math.floor(item[1] * scale)}" data-tooltip="${item[0]}: ${item[1]}"></div>`;
+    })
+    .join('');
+  }
+
+  getLink() {
+    return this.link ? `<a class="column-chart__link" href="${this.link}">View all</a>` : '';
+  }
+
+  get template () {
+    return `
+      <div class="column-chart column-chart_loading" style="--chart-height: ${this.chartHeight}">
+        <div class="column-chart__title">
+          ${this.label}
+          ${this.getLink()}
+        </div>
+        <div class="column-chart__container">
+          <div data-element="header" class="column-chart__header">
+            ${this.value}
+          </div>
+          <div data-element="body" class="column-chart__chart">
+            ${this.getColumnBody(this.data)}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  async render() {
+    const element = document.createElement('div');
+
+    element.innerHTML = this.template;
+
+    this.element = element.firstElementChild;
+
+    this.element.classList.remove(`column-chart_loading`);
+
+    this.subElements = this.getSubElements(this.element);
+
+    return this.element;
+  }
+
+  getSubElements (element) {
+    const elements = element.querySelectorAll('[data-element]');
+
+    return [...elements].reduce((accum, subElement) => {
+      accum[subElement.dataset.element] = subElement;
+
+      return accum;
+    }, {});
+  }
+
+  update ({headerData, bodyData}) {
+    this.subElements.header.textContent = headerData;
+    this.subElements.body.innerHTML = this.getColumnBody(bodyData);
+  }
+
+  destroy() {
+    this.element.remove();
+  }
+}

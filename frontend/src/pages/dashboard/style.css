@@ -1,0 +1,18 @@
+.dashboard__charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+  --chart-height: 150;
+}
+
+.dashboard__chart_opened {
+  --chart-column-color: var(--yellow);
+}
+
+.dashboard__chart_close {
+  --chart-column-color: var(--green);
+}
+
+.dashboard .sortable-table {
+  --cols: 6;
+}

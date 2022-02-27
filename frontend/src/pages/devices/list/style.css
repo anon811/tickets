@@ -1,0 +1,16 @@
+.devices-list form.form-inline {
+  grid-gap: 46px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.devices-list form.form-inline .form-label {
+  margin-bottom: 0;
+  margin-right: 16px;
+}
+
+.devices-list form.form-inline .form-group {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
