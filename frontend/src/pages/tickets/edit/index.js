@@ -2,17 +2,17 @@ import TicketForm from '../../../components/ticket-form/index.js';
 
 
 export default class Page {
+  ticketId;
   element;
   subElements = {};
   components = {};
 
   constructor(match) {
-    this.match = match;
+    [, this.ticketId] = match;
   }
 
   async initComponents () {
-    const [, ticketId] = this.match;
-    const ticketForm = new TicketForm(ticketId);
+    const ticketForm = new TicketForm(this.ticketId);
     await ticketForm.render();
     this.components.ticketForm = ticketForm;
   }
